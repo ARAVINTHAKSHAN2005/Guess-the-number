@@ -17,27 +17,33 @@ print("Let's Start")
 guess = [0]
 
 while True:
-    user_input = int(input("I am thinking of a number between 1 and 100, Enter your guess..."))
+    user_input = int(input("I am thinking of a number between 1 and 100, Enter your guess: "))
     
+    #When user enters a number greater than 100 or less than 1
     if user_input > 100 or user_input < 1:
         print("Out of Bounds, Try again")
-
-    elif user_input == num:
-        print("Congratulations, You have guessed correctly")
+        continue
+    
+    #When user guesses correctly
+    if user_input == num:
+        print(f"Congratulations, You have guessed correctly in only {len(guess)} guesses")
         break
 
-    guess.append("user_input")
+    guess.append(user_input)
     
-    if guess[-2] == 0:
-        if abs(num - guess[-1]) > abs(num - guess[-2]):
+    # when testing the first guess, guesses[-2]==0, which evaluates to False
+    #And directly moves down to the else condition
+    if guess[-2]:
+        if abs(num - user_input) < abs(num - guess[-2]):
             print('Warmer')
-        elif abs(num - guess[-1]) < abs(num - guess[-2]):
-            print('Colder')
+        else:
+            print("Colder")
     
+    #Checks if number is within 10 of num
     else:
-        if abs(num - guess[-1]) <=10 :
+        if abs(num - user_input) <=10 :
             print("Warm")
-        elif abs(num - guess[-1]) > 10:
+        elif abs(num - user_input) > 10:
             print('Cold')
 
     
