@@ -24,8 +24,20 @@ while True:
 
     elif user_input == num:
         print("Congratulations, You have guessed correctly")
+        break
 
     guess.append("user_input")
     
+    if guess[-2] == 0:
+        if abs(num - guess[-1]) > abs(num - guess[-2]):
+            print('Warmer')
+        elif abs(num - guess[-1]) < abs(num - guess[-2]):
+            print('Colder')
+    
+    else:
+        if abs(num - guess[-1]) <=10 :
+            print("Warm")
+        elif abs(num - guess[-1]) > 10:
+            print('Cold')
 
     
